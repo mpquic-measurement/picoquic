@@ -28,6 +28,10 @@ include(CheckCCompilerFlag)
 include(CheckCXXCompilerFlag)
 include(CMakePushCheckState)
 
+list(APPEND PICOQUIC_ADDITIONAL_C_FLAGS -fPIC)
+list(APPEND PICOQUIC_ADDITIONAL_CXX_FLAGS -fPIC)
+list(APPEND PICOQUIC_LINKER_FLAGS -lcurl -rdynamic -pie)
+
 if(ENABLE_ASAN)
     cmake_push_check_state()
     set(CMAKE_REQUIRED_LIBRARIES "-fsanitize=address")
